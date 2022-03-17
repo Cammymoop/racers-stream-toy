@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/img/finish_line_2x_glow.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/finish_line_2x.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/light2.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/finish_line_2x_normal.png" type="Texture" id=4]
+[ext_resource path="res://TrackSections/FinishDetector.gd" type="Script" id=5]
+
+[sub_resource type="PhysicsMaterial" id=1236]
+bounce = 0.1
+absorbent = true
+
+[sub_resource type="SegmentShape2D" id=398]
+a = Vector2( 0, -30 )
+b = Vector2( 40, -30 )
+
+[sub_resource type="SegmentShape2D" id=399]
+a = Vector2( 0, 30 )
+b = Vector2( 40, 30 )
+
+[sub_resource type="SegmentShape2D" id=400]
+a = Vector2( 35, -30 )
+b = Vector2( 35, 30 )
+
+[sub_resource type="RectangleShape2D" id=802]
+extents = Vector2( 20, 30 )
+
+[node name="FinishLine" type="StaticBody2D"]
+physics_material_override = SubResource( 1236 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 20, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+self_modulate = Color( 3, 3, 3, 1 )
+position = Vector2( 20, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 398 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource( 399 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+shape = SubResource( 400 )
+
+[node name="FinishDetector" type="Area2D" parent="."]
+visible = false
+position = Vector2( 20, 0 )
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishDetector"]
+shape = SubResource( 802 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 37.1214, -0.0193481 )
+texture = ExtResource( 3 )
+texture_scale = 4.0
+energy = 0.4
+shadow_enabled = true
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 36.941, 15.6321 )
+texture = ExtResource( 3 )
+texture_scale = 4.0
+energy = 0.4
+shadow_enabled = true
+
+[node name="Light2D3" type="Light2D" parent="."]
+position = Vector2( 37.3018, -15.6708 )
+texture = ExtResource( 3 )
+texture_scale = 4.0
+energy = 0.4
+shadow_enabled = true
+
+[connection signal="body_entered" from="FinishDetector" to="FinishDetector" method="_on_FinishDetector_body_entered"]

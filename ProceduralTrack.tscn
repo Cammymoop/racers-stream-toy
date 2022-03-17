@@ -1,0 +1,641 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/ProceduralTrack.gd" type="Script" id=1]
+[ext_resource path="res://TrackSections/RightTurnTS.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TrackSections/StraightTS.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Decorations/TrackLight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TrackSections/LeftTurnTS.tscn" type="PackedScene" id=5]
+[ext_resource path="res://TrackSections/FinishLine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TrackSections/fade_in_track.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[node name="ProceduralTrack" type="Node2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+max_sections = 190
+track_points = PoolVector2Array( 0, 0, 40, 0, 80, 0, 120, 0, 160, 0, 200, 0, 240, 0, 280, 0, 320, 0, 360, 0, 400, 0, 440, 0, 480, 0, 520, 0, 560, 0, 600, 0, 640, 0, 680, 0, 720, 0, 760, 0, 800, 0, 840, 0, 880, 0, 920, 0, 960, 0, 1000, 0, 1040, 0, 1080, 0, 1110.46, 2.3974, 1140.17, 9.53057, 1168.4, 21.2239, 1194.46, 37.1894, 1217.69, 57.0339, 1237.54, 80.2689, 1253.5, 106.322, 1265.19, 134.552, 1272.33, 164.264, 1274.73, 194.726, 1272.33, 225.188, 1265.19, 254.899, 1252.83, 292.942, 1240.47, 330.984, 1228.11, 369.026, 1215.75, 407.068, 1203.39, 445.11, 1191.03, 483.153, 1178.67, 521.195, 1166.31, 559.237, 1153.95, 597.279, 1146.81, 626.991, 1144.42, 657.453, 1146.81, 687.915, 1153.95, 717.626, 1165.64, 745.856, 1181.61, 771.91, 1201.45, 795.145, 1224.68, 814.989, 1250.74, 830.955, 1278.97, 842.648, 1308.68, 849.781, 1348.19, 856.039, 1387.69, 862.296, 1427.2, 868.553, 1466.71, 874.811, 1506.22, 881.068, 1545.73, 887.326, 1585.23, 893.583, 1624.74, 899.84, 1664.25, 906.098, 1703.76, 912.355, 1743.26, 918.612, 1782.77, 924.87, 1822.28, 931.127, 1861.79, 937.385, 1901.29, 943.642, 1940.8, 949.899, 1980.31, 956.157, 2019.82, 962.414, 2059.32, 968.672, 2098.83, 974.929, 2138.34, 981.186, 2177.85, 987.444, 2217.35, 993.701, 2256.86, 999.958, 2296.37, 1006.22, 2335.88, 1012.47, 2375.38, 1018.73, 2414.89, 1024.99, 2454.4, 1031.25, 2493.91, 1037.5, 2533.41, 1043.76, 2572.92, 1050.02, 2612.43, 1056.28, 2651.94, 1062.53, 2691.44, 1068.79, 2730.95, 1075.05, 2770.46, 1081.31, 2800.17, 1088.44, 2828.4, 1100.13, 2854.45, 1116.1, 2880.51, 1132.06, 2908.74, 1143.76, 2938.45, 1150.89, 2968.91, 1153.29, 2999.37, 1150.89, 3029.08, 1143.76, 3058.8, 1136.62, 3089.26, 1134.23, 3119.72, 1136.62, 3149.43, 1143.76, 3177.66, 1155.45, 3203.72, 1171.41, 3226.95, 1191.26, 3246.79, 1214.49, 3262.76, 1240.55, 3274.45, 1268.78, 3281.59, 1298.49, 3288.72, 1328.2, 3300.41, 1356.43, 3316.38, 1382.48, 3336.22, 1405.72, 3359.46, 1425.56, 3385.51, 1441.53, 3413.74, 1453.22, 3443.45, 1460.36, 3473.91, 1462.75, 3513.91, 1462.75, 3553.91, 1462.75, 3593.91, 1462.75, 3633.91, 1462.75, 3673.91, 1462.75, 3713.91, 1462.75, 3753.91, 1462.75, 3793.91, 1462.75, 3824.38, 1465.15, 3854.09, 1472.28, 3882.32, 1483.98, 3910.55, 1495.67, 3948.59, 1508.03, 3986.63, 1520.39, 4024.67, 1532.75, 4062.72, 1545.11, 4100.76, 1557.47, 4138.8, 1569.83 )
+point_rotations = [ 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.15708, 0.31416, 0.47124, 0.62832, 0.7854, 0.94248, 1.09956, 1.25664, 1.41372, 1.5708, 1.72788, 1.88496, 1.88496, 1.88496, 1.88496, 1.88496, 1.88496, 1.88496, 1.88496, 1.88496, 1.88496, 1.72788, 1.5708, 1.41372, 1.25664, 1.09956, 0.94248, 0.7854, 0.62832, 0.47124, 0.31416, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.15708, 0.31416, 0.47124, 0.62832, 0.47124, 0.31416, 0.15708, 0.0, -0.15708, -0.31416, -0.15708, 0.0, 0.15708, 0.31416, 0.47124, 0.62832, 0.7854, 0.94248, 1.09956, 1.25664, 1.41372, 1.25664, 1.09956, 0.94248, 0.7854, 0.62832, 0.47124, 0.31416, 0.15708, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.15708, 0.31416, 0.47124, 0.31416, 0.31416, 0.31416, 0.31416, 0.31416, 0.31416, 0.31416 ]
+
+[node name="TrackPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="TrackNodes" type="Node2D" parent="."]
+
+[node name="TrackSection2" parent="TrackNodes" instance=ExtResource( 3 )]
+
+[node name="TrackSection72" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 20, 0 )
+
+[node name="TrackSection73" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 40, 0 )
+
+[node name="TrackSection74" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 60, 0 )
+
+[node name="TrackSection75" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 80, 0 )
+
+[node name="TrackSection76" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 100, 0 )
+
+[node name="TrackSection77" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 120, 0 )
+
+[node name="TrackLight9" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 140, 0 )
+rotation = 3.14159
+
+[node name="TrackSection78" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 140, 0 )
+
+[node name="TrackSection79" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 160, 0 )
+
+[node name="TrackSection80" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 180, 0 )
+
+[node name="TrackSection81" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 200, 0 )
+
+[node name="TrackSection82" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 220, 0 )
+
+[node name="TrackSection83" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 240, 0 )
+
+[node name="TrackSection84" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 260, 0 )
+
+[node name="TrackSection85" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 280, 0 )
+
+[node name="TrackLight10" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 300, 0 )
+
+[node name="TrackSection86" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 300, 0 )
+
+[node name="TrackSection87" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 320, 0 )
+
+[node name="TrackSection88" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 340, 0 )
+
+[node name="TrackSection89" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 360, 0 )
+
+[node name="TrackSection90" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 380, 0 )
+
+[node name="TrackSection91" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 400, 0 )
+
+[node name="TrackSection92" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 420, 0 )
+
+[node name="TrackSection93" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 440, 0 )
+
+[node name="TrackLight11" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 460, 0 )
+rotation = 3.14159
+
+[node name="TrackSection94" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 460, 0 )
+
+[node name="TrackSection95" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 480, 0 )
+
+[node name="TrackSection96" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 500, 0 )
+
+[node name="TrackSection97" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 520, 0 )
+
+[node name="TrackSection98" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 540, 0 )
+
+[node name="TrackSection99" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 555.231, 1.1987 )
+rotation = 0.15708
+
+[node name="TrackSection100" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 570.087, 4.76529 )
+rotation = 0.31416
+
+[node name="TrackSection101" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 584.202, 10.6119 )
+rotation = 0.47124
+
+[node name="TrackLight12" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 597.228, 18.5947 )
+rotation = 3.76991
+
+[node name="TrackSection102" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 597.228, 18.5947 )
+rotation = 0.62832
+
+[node name="TrackSection103" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 608.846, 28.517 )
+rotation = 0.7854
+
+[node name="TrackSection104" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 618.768, 40.1345 )
+rotation = 0.94248
+
+[node name="TrackSection105" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 626.751, 53.1611 )
+rotation = 1.09956
+
+[node name="TrackSection106" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 632.597, 67.2762 )
+rotation = 1.25664
+
+[node name="TrackSection107" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 636.164, 82.132 )
+rotation = 1.41372
+
+[node name="TrackSection108" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 637.363, 97.3629 )
+rotation = 1.5708
+
+[node name="TrackSection109" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 636.164, 112.594 )
+rotation = 1.72788
+
+[node name="TrackLight13" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 632.597, 127.45 )
+rotation = 5.02655
+
+[node name="TrackSection110" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 632.597, 127.45 )
+rotation = 1.88496
+
+[node name="TrackSection111" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 626.417, 146.471 )
+rotation = 1.88496
+
+[node name="TrackSection112" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 620.236, 165.492 )
+rotation = 1.88496
+
+[node name="TrackSection113" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 614.056, 184.513 )
+rotation = 1.88496
+
+[node name="TrackSection114" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 607.876, 203.534 )
+rotation = 1.88496
+
+[node name="TrackSection115" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 601.695, 222.555 )
+rotation = 1.88496
+
+[node name="TrackSection116" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 595.515, 241.576 )
+rotation = 1.88496
+
+[node name="TrackSection117" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 589.334, 260.597 )
+rotation = 1.88496
+
+[node name="TrackLight14" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 583.154, 279.619 )
+rotation = 5.02655
+
+[node name="TrackSection118" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 583.154, 279.619 )
+rotation = 1.88496
+
+[node name="TrackSection119" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 576.974, 298.64 )
+rotation = 1.88496
+
+[node name="TrackSection120" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 573.407, 313.495 )
+rotation = 1.72788
+
+[node name="TrackSection121" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 572.208, 328.726 )
+rotation = 1.5708
+
+[node name="TrackSection122" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 573.407, 343.957 )
+rotation = 1.41372
+
+[node name="TrackSection123" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 576.973, 358.813 )
+rotation = 1.25664
+
+[node name="TrackSection124" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 582.82, 372.928 )
+rotation = 1.09956
+
+[node name="TrackSection125" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 590.803, 385.955 )
+rotation = 0.94248
+
+[node name="TrackLight15" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 600.725, 397.572 )
+rotation = 0.7854
+
+[node name="TrackSection126" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 600.725, 397.572 )
+rotation = 0.7854
+
+[node name="TrackSection127" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 612.342, 407.495 )
+rotation = 0.62832
+
+[node name="TrackSection128" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 625.369, 415.477 )
+rotation = 0.47124
+
+[node name="TrackSection129" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 639.484, 421.324 )
+rotation = 0.31416
+
+[node name="TrackSection130" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 654.34, 424.891 )
+rotation = 0.15708
+
+[node name="TrackSection131" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 674.094, 428.019 )
+rotation = 0.15708
+
+[node name="TrackSection132" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 693.847, 431.148 )
+rotation = 0.15708
+
+[node name="TrackSection133" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 713.601, 434.277 )
+rotation = 0.15708
+
+[node name="TrackLight16" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 733.355, 437.405 )
+rotation = 0.15708
+
+[node name="TrackSection134" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 733.355, 437.405 )
+rotation = 0.15708
+
+[node name="TrackSection135" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 753.109, 440.534 )
+rotation = 0.15708
+
+[node name="TrackSection136" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 772.863, 443.663 )
+rotation = 0.15708
+
+[node name="TrackSection137" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 792.616, 446.791 )
+rotation = 0.15708
+
+[node name="TrackSection138" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 812.37, 449.92 )
+rotation = 0.15708
+
+[node name="TrackSection139" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 832.124, 453.049 )
+rotation = 0.15708
+
+[node name="TrackSection140" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 851.878, 456.178 )
+rotation = 0.15708
+
+[node name="TrackSection211" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 871.632, 459.306 )
+rotation = 0.15708
+
+[node name="TrackLight26" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 891.385, 462.435 )
+rotation = 3.29867
+
+[node name="TrackSection212" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 891.385, 462.435 )
+rotation = 0.15708
+
+[node name="TrackSection213" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 911.139, 465.564 )
+rotation = 0.15708
+
+[node name="TrackSection214" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 930.893, 468.692 )
+rotation = 0.15708
+
+[node name="TrackSection215" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 950.647, 471.821 )
+rotation = 0.15708
+
+[node name="TrackSection216" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 970.4, 474.95 )
+rotation = 0.15708
+
+[node name="TrackSection217" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 990.154, 478.078 )
+rotation = 0.15708
+
+[node name="TrackSection218" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1009.91, 481.207 )
+rotation = 0.15708
+
+[node name="TrackSection219" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1029.66, 484.336 )
+rotation = 0.15708
+
+[node name="TrackLight27" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1049.42, 487.464 )
+rotation = 0.15708
+
+[node name="TrackSection220" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1049.42, 487.464 )
+rotation = 0.15708
+
+[node name="TrackSection221" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1069.17, 490.593 )
+rotation = 0.15708
+
+[node name="TrackSection222" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1088.92, 493.722 )
+rotation = 0.15708
+
+[node name="TrackSection223" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1108.68, 496.851 )
+rotation = 0.15708
+
+[node name="TrackSection224" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1128.43, 499.979 )
+rotation = 0.15708
+
+[node name="TrackSection225" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1148.18, 503.108 )
+rotation = 0.15708
+
+[node name="TrackSection226" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1167.94, 506.237 )
+rotation = 0.15708
+
+[node name="TrackSection227" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1187.69, 509.365 )
+rotation = 0.15708
+
+[node name="TrackLight28" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1207.45, 512.494 )
+rotation = 0.15708
+
+[node name="TrackSection228" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1207.45, 512.494 )
+rotation = 0.15708
+
+[node name="TrackSection229" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1227.2, 515.623 )
+rotation = 0.15708
+
+[node name="TrackSection230" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1246.95, 518.751 )
+rotation = 0.15708
+
+[node name="TrackSection231" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1266.71, 521.88 )
+rotation = 0.15708
+
+[node name="TrackSection232" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1286.46, 525.009 )
+rotation = 0.15708
+
+[node name="TrackSection233" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1306.21, 528.138 )
+rotation = 0.15708
+
+[node name="TrackSection234" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1325.97, 531.266 )
+rotation = 0.15708
+
+[node name="TrackSection235" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1345.72, 534.395 )
+rotation = 0.15708
+
+[node name="TrackLight29" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1365.48, 537.524 )
+rotation = 3.29867
+
+[node name="TrackSection236" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1365.48, 537.524 )
+rotation = 0.15708
+
+[node name="TrackSection237" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1385.23, 540.653 )
+rotation = 0.15708
+
+[node name="TrackSection238" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1400.09, 544.219 )
+rotation = 0.31416
+
+[node name="TrackSection239" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1414.2, 550.066 )
+rotation = 0.47124
+
+[node name="TrackSection240" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1427.23, 558.048 )
+rotation = 0.62832
+
+[node name="TrackSection241" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1440.25, 566.031 )
+rotation = 0.47124
+
+[node name="TrackSection242" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1454.37, 571.878 )
+rotation = 0.31416
+
+[node name="TrackSection243" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1469.22, 575.444 )
+rotation = 0.15708
+
+[node name="TrackLight30" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1484.46, 576.643 )
+
+[node name="TrackSection244" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1484.46, 576.643 )
+
+[node name="TrackSection245" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1499.69, 575.444 )
+rotation = -0.15708
+
+[node name="TrackSection246" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1514.54, 571.878 )
+rotation = -0.31416
+
+[node name="TrackSection247" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1529.4, 568.311 )
+rotation = -0.15708
+
+[node name="TrackSection248" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1544.63, 567.113 )
+
+[node name="TrackSection249" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1559.86, 568.311 )
+rotation = 0.15708
+
+[node name="TrackSection250" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1574.72, 571.878 )
+rotation = 0.31416
+
+[node name="TrackSection251" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1588.83, 577.724 )
+rotation = 0.47124
+
+[node name="TrackLight31" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1601.86, 585.707 )
+rotation = 0.62832
+
+[node name="TrackSection252" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1601.86, 585.707 )
+rotation = 0.62832
+
+[node name="TrackSection253" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1613.48, 595.63 )
+rotation = 0.7854
+
+[node name="TrackSection254" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1623.4, 607.247 )
+rotation = 0.94248
+
+[node name="TrackSection255" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1631.38, 620.274 )
+rotation = 1.09956
+
+[node name="TrackSection256" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1637.23, 634.389 )
+rotation = 1.25664
+
+[node name="TrackSection257" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1640.79, 649.245 )
+rotation = 1.41372
+
+[node name="TrackSection258" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1644.36, 664.101 )
+rotation = 1.25664
+
+[node name="TrackSection259" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1650.21, 678.216 )
+rotation = 1.09956
+
+[node name="TrackLight32" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1658.19, 691.242 )
+rotation = 4.08407
+
+[node name="TrackSection260" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1658.19, 691.242 )
+rotation = 0.94248
+
+[node name="TrackSection261" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1668.11, 702.86 )
+rotation = 0.7854
+
+[node name="TrackSection262" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1679.73, 712.782 )
+rotation = 0.62832
+
+[node name="TrackSection263" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1692.76, 720.765 )
+rotation = 0.47124
+
+[node name="TrackSection264" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1706.87, 726.611 )
+rotation = 0.31416
+
+[node name="TrackSection265" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1721.73, 730.178 )
+rotation = 0.15708
+
+[node name="TrackSection266" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1736.96, 731.377 )
+
+[node name="TrackSection267" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1756.96, 731.377 )
+
+[node name="TrackLight33" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1776.96, 731.377 )
+
+[node name="TrackSection268" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1776.96, 731.377 )
+
+[node name="TrackSection269" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1796.96, 731.377 )
+
+[node name="TrackSection270" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1816.96, 731.377 )
+
+[node name="TrackSection271" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1836.96, 731.377 )
+
+[node name="TrackSection272" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1856.96, 731.377 )
+
+[node name="TrackSection273" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1876.96, 731.377 )
+
+[node name="TrackSection274" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1896.96, 731.377 )
+
+[node name="TrackSection275" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1912.19, 732.575 )
+rotation = 0.15708
+
+[node name="TrackLight34" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 1927.04, 736.142 )
+rotation = 3.45575
+
+[node name="TrackSection276" parent="TrackNodes" instance=ExtResource( 2 )]
+position = Vector2( 1927.04, 736.142 )
+rotation = 0.31416
+
+[node name="TrackSection277" parent="TrackNodes" instance=ExtResource( 5 )]
+position = Vector2( 1941.16, 741.989 )
+rotation = 0.47124
+
+[node name="TrackSection278" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1955.27, 747.835 )
+rotation = 0.31416
+
+[node name="TrackSection279" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1974.29, 754.016 )
+rotation = 0.31416
+
+[node name="TrackSection280" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 1993.32, 760.196 )
+rotation = 0.31416
+
+[node name="TrackSection290" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 2012.34, 766.376 )
+rotation = 0.31416
+
+[node name="TrackSection291" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 2031.36, 772.557 )
+rotation = 0.31416
+
+[node name="TrackSection292" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 2050.38, 778.737 )
+rotation = 0.31416
+
+[node name="TrackLight36" parent="TrackNodes" instance=ExtResource( 4 )]
+position = Vector2( 2069.4, 784.917 )
+rotation = 0.31416
+
+[node name="TrackSection293" parent="TrackNodes" instance=ExtResource( 3 )]
+position = Vector2( 2069.4, 784.917 )
+rotation = 0.31416
+
+[node name="FinishLine" parent="TrackNodes" instance=ExtResource( 6 )]
+position = Vector2( 2088.42, 791.098 )
+rotation = 0.31416
+
+[node name="TrackSection" parent="TrackNodes" instance=ExtResource( 7 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0.694118, 0.694118, 0.694118, 1 )

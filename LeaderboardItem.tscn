@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://LeaderboardItem.gd" type="Script" id=2]
+[ext_resource path="res://UI/Spinny.tscn" type="PackedScene" id=3]
+
+[node name="LeaderboardItem" type="HBoxContainer"]
+margin_right = 176.0
+margin_bottom = 22.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Control" parent="."]
+margin_right = 22.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 22, 22 )
+
+[node name="Spinny" parent="Icon" instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 26.0
+margin_top = 4.0
+margin_right = 111.0
+margin_bottom = 18.0
+text = "Cammymoop"

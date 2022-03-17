@@ -1,0 +1,198 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/EasyMenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Racer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/RaceCam.gd" type="Script" id=3]
+[ext_resource path="res://src/RacersScene.gd" type="Script" id=4]
+[ext_resource path="res://src/ManualRacersDialog.gd" type="Script" id=5]
+[ext_resource path="res://ProceduralTrack.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Leaderboard.gd" type="Script" id=7]
+
+[sub_resource type="Environment" id=1]
+background_color = Color( 1, 0, 0, 1 )
+adjustment_brightness = 0.5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.14902, 0.137255, 0.188235, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.482353, 0.819608, 0.85098, 1 )
+corner_radius_top_right = 24
+corner_radius_bottom_left = 24
+
+[node name="RacersScene" type="Node2D"]
+script = ExtResource( 4 )
+racer_scene = ExtResource( 2 )
+
+[node name="Racers" type="Node2D" parent="."]
+
+[node name="RaceCam" type="Camera2D" parent="."]
+smoothing_enabled = true
+script = ExtResource( 3 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.694118, 0.694118, 0.694118, 1 )
+
+[node name="ProceduralTrack" parent="." instance=ExtResource( 6 )]
+
+[node name="StartingZone" type="Node2D" parent="."]
+visible = false
+
+[node name="Start" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, 0 )
+
+[node name="Start2" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, -18 )
+
+[node name="Start3" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, 18 )
+
+[node name="Start4" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, -36 )
+
+[node name="Start5" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, 36 )
+
+[node name="Start6" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, -9 )
+
+[node name="Start7" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, 9 )
+
+[node name="Start8" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, -27 )
+
+[node name="Start9" type="Position2D" parent="StartingZone"]
+position = Vector2( 10, 27 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="ManualRacersDialog" type="AcceptDialog" parent="CanvasLayer"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -122.0
+margin_top = -250.0
+margin_right = 122.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 500, 500 )
+popup_exclusive = true
+window_title = "Start Your Engines!"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ManualRacersDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ManualRacersDialog/VBoxContainer"]
+margin_right = 484.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="CanvasLayer/ManualRacersDialog/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 43.0
+margin_bottom = 19.0
+text = "Driver:"
+
+[node name="NameEdit" type="LineEdit" parent="CanvasLayer/ManualRacersDialog/VBoxContainer/HBoxContainer"]
+margin_left = 47.0
+margin_right = 297.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="CanvasLayer/ManualRacersDialog/VBoxContainer/HBoxContainer"]
+margin_left = 301.0
+margin_top = 5.0
+margin_right = 427.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Color:"
+align = 2
+
+[node name="ColorSelect" parent="CanvasLayer/ManualRacersDialog/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 431.0
+margin_top = 2.0
+margin_right = 484.0
+margin_bottom = 22.0
+text = "yellow"
+
+[node name="AddButton" type="Button" parent="CanvasLayer/ManualRacersDialog/VBoxContainer"]
+margin_top = 28.0
+margin_right = 484.0
+margin_bottom = 48.0
+text = "Add"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/ManualRacersDialog/VBoxContainer"]
+margin_top = 52.0
+margin_right = 484.0
+margin_bottom = 456.0
+size_flags_vertical = 3
+
+[node name="RacersList" type="ItemList" parent="CanvasLayer/ManualRacersDialog/VBoxContainer/HBoxContainer2"]
+margin_right = 416.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 160, 80 )
+size_flags_horizontal = 3
+select_mode = 1
+
+[node name="RemoveButton" type="Button" parent="CanvasLayer/ManualRacersDialog/VBoxContainer/HBoxContainer2"]
+margin_left = 420.0
+margin_top = 192.0
+margin_right = 484.0
+margin_bottom = 212.0
+size_flags_vertical = 4
+text = "Remove"
+
+[node name="Leaderboard" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_bottom = 100.0
+grow_horizontal = 0
+rect_min_size = Vector2( 180, 100 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Leaderboard"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 178.0
+margin_bottom = 98.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 4
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Leaderboard/MarginContainer"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 168.0
+margin_bottom = 92.0
+
+[connection signal="confirmed" from="CanvasLayer/ManualRacersDialog" to="." method="_on_ManualRacersDialog_confirmed"]
+[connection signal="confirmed" from="CanvasLayer/ManualRacersDialog" to="CanvasLayer/ManualRacersDialog" method="_on_ManualRacersDialog_confirmed"]
+[connection signal="pressed" from="CanvasLayer/ManualRacersDialog/VBoxContainer/AddButton" to="CanvasLayer/ManualRacersDialog" method="_on_AddButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/ManualRacersDialog/VBoxContainer/HBoxContainer2/RemoveButton" to="CanvasLayer/ManualRacersDialog" method="_on_RemoveButton_pressed"]

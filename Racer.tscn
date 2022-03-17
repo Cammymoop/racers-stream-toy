@@ -1,0 +1,212 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://src/Racer.gd" type="Script" id=1]
+[ext_resource path="res://assets/img/racer_no_winshield.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/racer1_glass_red.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/smoke_particle.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/light_booster.png" type="Texture" id=5]
+[ext_resource path="res://src/AnimationPlayerRandomStart.gd" type="Script" id=6]
+[ext_resource path="res://assets/img/racer_normals.png" type="Texture" id=7]
+[ext_resource path="res://Decorations/TrackLight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/img/burner_bw.png" type="Texture" id=9]
+
+[sub_resource type="PhysicsMaterial" id=13]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 7.0
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.173913, 1 )
+colors = PoolColorArray( 0.175293, 0.175293, 0.175293, 1, 0.267578, 0.267578, 0.267578, 1, 0.912109, 0.912109, 0.912109, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0.381818 ), 0.0, 0.0, 0, 0, Vector2( 0.733696, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 1.2
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "burn"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.2 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "light_intensity"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BurnerLight:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[sub_resource type="OccluderPolygon2D" id=12]
+cull_mode = 1
+polygon = PoolVector2Array( -2.50879, 3.272, -2.48923, -3.13109, 12.8062, 0.0391197 )
+
+[sub_resource type="CanvasItemMaterial" id=14]
+light_mode = 1
+
+[node name="Racer" type="RigidBody2D" groups=["Racers"]]
+position = Vector2( 43, 32 )
+rotation = 0.671686
+z_index = 5
+collision_layer = 5
+physics_material_override = SubResource( 13 )
+angular_damp = 3.0
+script = ExtResource( 1 )
+initial_thrust = 180.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 10, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="SmokeParticles" type="Particles2D" parent="."]
+z_index = -1
+emitting = false
+amount = 30
+lifetime = 1.6
+local_coords = false
+process_material = SubResource( 10 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 4, 0 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 7 )
+
+[node name="SpriteWindshield" type="Sprite" parent="."]
+position = Vector2( 4, 0 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 7 )
+
+[node name="Burner" type="Sprite" parent="."]
+position = Vector2( -11, 0 )
+scale = Vector2( 1.24112, 1.09645 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Burner"]
+autoplay = "burn"
+anims/burn = SubResource( 2 )
+
+[node name="BurnerLight" type="Light2D" parent="Burner"]
+position = Vector2( -14, 0 )
+texture = ExtResource( 5 )
+texture_scale = 5.0
+color = Color( 1, 0.992157, 0.584314, 1 )
+range_height = 6.0
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0.486275 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Burner"]
+autoplay = "light_intensity"
+playback_speed = 2.0
+anims/light_intensity = SubResource( 11 )
+script = ExtResource( 6 )
+
+[node name="ShowTarget" type="Line2D" parent="."]
+visible = false
+show_behind_parent = true
+width = 2.0
+default_color = Color( 1, 0.4, 0.4, 0.109804 )
+
+[node name="ShowTarget2" type="Line2D" parent="."]
+visible = false
+show_behind_parent = true
+width = 2.0
+default_color = Color( 0.4, 1, 0.54902, 0.109804 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+margin_left = -107.0
+margin_top = -107.0
+margin_right = 65.0
+margin_bottom = 104.0
+color = Color( 0.443137, 0.443137, 0.443137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource( 12 )
+
+[node name="NameTag" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enable = true
+
+[node name="Node2D" type="Node2D" parent="NameTag"]
+position = Vector2( 43, 32 )
+
+[node name="Label" type="Label" parent="NameTag/Node2D"]
+margin_top = -40.0
+margin_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cammymoop"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="NameTag/Node2D/Label"]
+show_behind_parent = true
+material = SubResource( 14 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 10, 10 )
+color = Color( 0, 0, 0, 0.862745 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../NameTag/Node2D")
+update_rotation = false
+
+[node name="TrackLight" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 16.3444, 68.7667 )
